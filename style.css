@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: rgb(252,227,116);
+  background: -moz-linear-gradient(312deg, rgba(252,227,116,1) 0%, rgba(77,250,195,1) 100%);
+  background: -webkit-linear-gradient(312deg, rgba(252,227,116,1) 0%, rgba(77,250,195,1) 100%);
+  background: linear-gradient(312deg, rgba(252,227,116,1) 0%, rgba(77,250,195,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fce374",endColorstr="#4dfac3",GradientType=1);
+ 
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* LOGIN STYLE */
+.login-container {
+  min-width: 500px;
+  min-height: 300px;
+  background-color: rgba(0, 0, 0, .5);
+  border: 2px solid white;
+  position: relative;
+}
+.login-form {
+  color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.login-form label {
+  font-size: 2rem;
+}
+.login-form input[type=text] {
+  width: 60%;
+  font-size: 1.8rem;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.login-form input[type=submit] {
+  font-size: 1.4rem;
+  padding: 10px 20px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+/* GAME SELECTION STYLE */
+.selection-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 50px;
+}
+.game-box {
+  display: block;
+  width: 280px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, .5);
+  border: 2px solid black;
+  position: relative;
+}
+
+.game-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
+.game-layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.game1 {
+  background-image: url('./img/hexagon-puzzle.png');
+  background-position: center;
+}
+.game2 {
+  background-image: url('./img/color-game.png');
+  background-position: center;
+}
+.game3 {
+  background-image: url('./img/color-game.png');
+  background-position: center;
+}
+
+.game-name {
+  color: white ;
+  text-decoration: none;
+  font-size: 1.8rem;
+  text-shadow:
+  -1px -1px 0 #000,  
+   1px -1px 0 #000,
+   -1px 1px 0 #000,
+    1px 1px 0 #000;
+    font-weight: bold;
+}
