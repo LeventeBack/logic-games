@@ -13,6 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 /* LOGIN STYLE */
 .login-container {
@@ -51,6 +52,17 @@ body {
   border-radius: 10px;
 }
 
+.error {
+  position: absolute;
+  top: 15%;
+  background-color: red;
+  border: 2px solid black;
+  color: white;
+  padding: 10px 20px;
+  font-size: 2rem;
+}
+
+
 /* GAME SELECTION STYLE */
 .selection-container {
   display: grid;
@@ -66,9 +78,8 @@ body {
   position: relative;
 }
 
-.game-box:hover {
+.game-box:not(.completed):hover {
   transform: scale(1.05);
-  box-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
 .game-layer {
@@ -93,7 +104,6 @@ body {
   background-position: center;
 }
 .game3 {
-  background-image: url('./img/color-game.png');
   background-position: center;
 }
 
@@ -107,4 +117,19 @@ body {
    -1px 1px 0 #000,
     1px 1px 0 #000;
     font-weight: bold;
+}
+
+.completed {
+  box-shadow: 0 0 5px 10px #1a9200;
+}
+.completed-tick {
+  width: 70px;
+  height: 70px;
+  background-image: url('./img/completed.png');
+  background-size: cover;
+  z-index: 100;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%);
 }

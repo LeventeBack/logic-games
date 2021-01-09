@@ -1,3 +1,24 @@
+<?php
+  session_start();
+  
+  if(!isset($_SESSION['games_player']))
+    header('location: ../');
+
+  include_once('../database.php');
+  
+  $conn = Database();
+    
+  if ($conn->connect_error) 
+    die("Connection failed: " . $conn->connect_error);
+
+  $player_id = $_SESSION['games_player']['id'];
+
+  $sql = "SELECT * FROM color_game WHERE player_id = '".$player_id."'";
+  $result = $conn->query($sql);
+
+  if($result->num_rows > 0)
+    header('location: ../');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

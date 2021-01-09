@@ -1,7 +1,24 @@
 <?php
   session_start();
+  
   if(!isset($_SESSION['games_player']))
     header('location: ../');
+
+  include_once('../database.php');
+
+  $conn = Database();
+    
+  if ($conn->connect_error) 
+    die("Connection failed: " . $conn->connect_error);
+
+  $player_id = $_SESSION['games_player']['id'];
+
+  $sql = "SELECT * FROM hexagon_game WHERE player_id = '".$player_id."'";
+  $result = $conn->query($sql);
+
+  if($result->num_rows > 0)
+    header('location: ../');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +32,7 @@
     crossorigin="anonymous">
   </script>
   <script src="script.js" defer></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
   <link rel="shortcut icon" href="./pics/hexagon.png" type="image/x-icon">
 </head>
 <body>  
@@ -51,6 +68,7 @@
 
     <div class="message hidden" data-message>
         <h1 class="text">Gratulálok! Ügyes vagy!</h1>
+        <a href="../" class="btn">Vissza a Főoldalra</a>
     </div>
 
   </div>

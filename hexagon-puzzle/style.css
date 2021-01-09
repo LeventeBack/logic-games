@@ -151,9 +151,11 @@ body {
 .btn {
   background-color: rgba(77,250,128,1);
   font-size: 1.5rem;
-  padding: 0.4em;
+  padding: 0.6em 1em;
   border-radius: 20px;
   border: 2px solid black;  
+  text-decoration: none;
+  color: black;
 }
 .btn:hover {
   outline: none;
@@ -164,6 +166,7 @@ body {
   outline: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.733);
 }
+
 
 @media(max-width: 960px){
   :root {

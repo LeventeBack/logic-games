@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,7 @@
 </head>
 <body>
     <?php
-      if(isset($_COOKIE['games_player'])) 
+      if(isset($_SESSION['games_player']))
         include('./pages/menu.php');
       else 
         include('./pages/login.php');
