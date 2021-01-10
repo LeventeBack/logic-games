@@ -3,6 +3,7 @@
 }
 :root {
   --cell-size: 100px;
+  --color-size: 50px;
 }
 body {
   min-height: 100vh;
@@ -43,24 +44,29 @@ body {
 .side {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   max-width: calc(var(--cell-size) * 5);
   margin-right: 50px;
+  padding: 20px 0;
 }
 .task {
   font-size: 1.3rem;
   text-indent: 30px;
   text-align: justify;
 }
+.task p {
+  margin-bottom: 0;
+}
 .color-container {
  display: flex;
  justify-content: space-around;
+ align-items: center;
 }
 .color {
   border: 2px solid black;
   border-radius: 50%;
-  width: 50px;
-  height: 50px; 
+  width: var(--color-size);
+  height: var(--color-size); 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.692);
 }
 .color:hover {
@@ -87,4 +93,53 @@ body {
   outline: none;
 }
 
+@media(max-width: 1150px) {
+  :root {
+    --cell-size: 80px;
+    --color-size: 40px;
+  } 
+  .task {
+    font-size: 1.1rem;
+  }
+  .btn { 
+    padding: 5px 10px;
+  }
+}
+@media(max-width: 1000px){
+  :root {
+    --cell-size: 70px;
+    --color-size: 35px;
+  } 
+  .task {
+    font-size: 1rem;
+  }
+  .side {
+    margin-right: 20px;
+    padding: 0;
+  }
+  .container {
+    padding: 15px;
+  }
+}
+@media(max-width: 800px){
+  .side {
+    margin: 20px 0;
+  } 
+  .color-container {
+    padding: 15px 0;
+  }
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media(max-width: 460px) {
+  :root {
+    --cell-size: 45px;
+    --color-size: 25px;
+  } 
+  .side {
+    margin: 8px 0;
+  } 
+}
 

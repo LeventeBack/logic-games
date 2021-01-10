@@ -1,12 +1,17 @@
+const timer = {
+  startTime: new Date(), 
+  endTime: null,
+  get time(){
+    return (this.endTime.getTime() - this.startTime.getTime()) / 1000;
+  }
+}
 
-const WHITE = "rgb(255, 255, 255)";
 const COLORS = [
   "rgb(245,242,66)",
   "rgb(19,235,91)",
   "rgb(92,158,237)",
   "rgb(230,16,16)",
   "rgb(201,92,237)",
-  WHITE
 ];
 
 const grid = document.querySelector('[data-grid]');
@@ -14,15 +19,16 @@ const gridCells = document.querySelectorAll('[data-grid-cell]')
 const colors = document.querySelectorAll('[data-color]');
 
 const restartButton = document.querySelector('[data-restart]');
+const finishButton = document.querySelector('[data-finish]');
 
 const activeColor = {
   color: COLORS[0],
   get colored() {
-    if(this.color === WHITE) return 0;
     let number = 0;
     for(let i = 0; i < gridCells.length; i++)
       if(gridCells[i].style.backgroundColor === this.color)
         number++;
+      
     return number;
   }
 };
@@ -40,9 +46,8 @@ colors.forEach((color, index) => {
 gridCells.forEach(cell => {
   cell.addEventListener("click", e => {
     if(activeColor.colored >= 4) return;
+    
     const selectedCell = e.target;  
-    console.log(selectedCell.style.backgroundColor)
-    if(selectedCell.style.backgroundColor != "") return;
     if(canBeColored(parseInt(selectedCell.dataset.row), parseInt(selectedCell.dataset.column)))
       selectedCell.style.backgroundColor = activeColor.color;
   })
@@ -66,6 +71,35 @@ function canBeColored(row, column){
   return false;
 }
 
+function isFilled(){
+  return Array.from(gridCells).every(cell => cell.style.backgroundColor != '');
+}
+
 restartButton.addEventListener('click', () => location.reload());
+
+finishButton.addEventListener('click', () => {
+  if(!isFilled()) return;
+  timer.endTime = new Date();
+
+  saveData();
+})
+
+function saveData(){
+  html2canvas(grid).then(canvas => {
+    const image = canvas.toDataURL("image/jpg", 0.9);
+    $.ajax({
+      type: "POST",
+      url: './save.php',
+      data: {
+        image: image, 
+        time: timer.time
+      },
+      success: (result) => {
+        console.log(result);
+        window.location.replace('../');
+      },
+    });
+  })
+}
 
 document.getElementById('startClick').click();

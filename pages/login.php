@@ -12,8 +12,6 @@
     $sql = "SELECT * FROM players WHERE id = '".$code."'";
     $result = $conn->query($sql);
 
-    print_r($result);
-
     if($result->num_rows == 0)
       echo "<div class='error'>Hibás Kód!</div>";
     else {

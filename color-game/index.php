@@ -31,7 +31,8 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
     crossorigin="anonymous">
   </script>
-  <script src="script.js" defer></script>
+  <script src="./html2canvas.min.js"></script>
+  <script src="./script.js" defer></script>
   <title>Document</title>
 </head>
 <body>
@@ -45,7 +46,6 @@
       </div>
       <div class="color-container">
         <div class="color" data-color id="startClick"></div>
-        <div class="color" data-color></div>
         <div class="color" data-color></div>
         <div class="color" data-color></div>
         <div class="color" data-color></div>
