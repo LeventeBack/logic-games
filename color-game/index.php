@@ -33,7 +33,7 @@
   </script>
   <script src="./html2canvas.min.js"></script>
   <script src="./script.js" defer></script>
-  <title>Document</title>
+  <title>Torta szeletelés</title>
 </head>
 <body>
   <div class="container">
