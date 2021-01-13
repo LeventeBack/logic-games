@@ -16,7 +16,6 @@
       echo "<div class='error'>Hibás Kód!</div>";
     else {
       $_SESSION['games_player'] = $result->fetch_assoc();
-      header('location: ./');
     }
   } 
 ?>
