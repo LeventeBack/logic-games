@@ -14,7 +14,7 @@
       if(isset($_SESSION['games_player']))
         include('./pages/menu.php');
       else 
-        include('./pages/login.php');
+        include('./pages/register.php');
     ?>
 </body>
 </html>
