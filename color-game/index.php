@@ -13,7 +13,7 @@
 
   $player_id = $_SESSION['games_player']['id'];
 
-  $sql = "SELECT * FROM color_game WHERE player_id = '".$player_id."'";
+  $sql = "SELECT * FROM color_game WHERE player_id = '$player_id' AND completed = '1'";
   $result = $conn->query($sql);
 
   if($result->num_rows > 0)

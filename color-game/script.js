@@ -14,6 +14,8 @@ const COLORS = [
   "rgb(201,92,237)",
 ];
 
+let completed = 0;
+
 const grid = document.querySelector('[data-grid]');
 const gridCells = document.querySelectorAll('[data-grid-cell]')
 const colors = document.querySelectorAll('[data-color]');
@@ -85,6 +87,7 @@ finishButton.addEventListener('click', () => {
 })
 
 function saveData(){
+  completed = 1;
   html2canvas(grid).then(canvas => {
     const image = canvas.toDataURL("image/jpg", 0.9);
     $.ajax({
@@ -92,7 +95,8 @@ function saveData(){
       url: './save.php',
       data: {
         image: image, 
-        time: timer.time
+        time: timer.time,
+        completed
       },
       success: (result) => {
         console.log(result);
@@ -101,5 +105,16 @@ function saveData(){
     });
   })
 }
+
+$(window).on('beforeunload', () => {
+  if(!completed){
+    timer.endTime = new Date();
+    let data = new FormData();
+    data.append('time', timer.time);
+    data.append('completed', completed);
+  
+    navigator.sendBeacon('./save.php', data);
+  }
+});
 
 document.getElementById('startClick').click();
