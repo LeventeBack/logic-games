@@ -13,7 +13,7 @@
 
   $player_id = $_SESSION['games_player']['id'];
 
-  $sql = "SELECT * FROM hexagon_game WHERE player_id = '".$player_id."'";
+  $sql = "SELECT * FROM hexagon_game WHERE player_id = '$player_id' AND completed = '1'";
   $result = $conn->query($sql);
 
   if($result->num_rows > 0)
@@ -39,8 +39,11 @@
   <div class="wrapper">
 
     <div class="task-container" data-task>
-      <strong>Feladat:</strong>
-      Helyezd el a kis hatszögeket a nagy alakzatba, úgy, hogy két szomszédos háromszögben ugyanaz a szám legyen. A megadott hatszögeket nem lehet elforgatni.
+      <div>
+        <strong>Feladat:</strong>
+        Helyezd el a kis hatszögeket a nagy alakzatba, úgy, hogy két szomszédos háromszögben ugyanaz a szám legyen. A megadott hatszögeket nem lehet elforgatni.
+      </div>
+      <button class="btn" data-restart>Újrakezd</button>
     </div>
     <div class="container">
     
@@ -70,7 +73,6 @@
         <h1 class="text">Gratulálok! Ügyes vagy!</h1>
         <a href="../" class="btn">Vissza a Főoldalra</a>
     </div>
-
   </div>
   
 </body>

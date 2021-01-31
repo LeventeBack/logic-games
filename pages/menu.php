@@ -11,8 +11,8 @@
   $player_id = $_SESSION['games_player']['id'];
 
   foreach ($GAMES as $game) {
-    $sql = "SELECT * FROM ".$game." WHERE player_id = '".$player_id."'";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM `".$game."` WHERE (`player_id` = '$player_id' AND `completed` = '1')";
+    $result = $conn->query($sql);    
 
     if($result->num_rows > 0){
       array_push($has_played, true);
@@ -39,7 +39,7 @@
     </div>
   </a>
 
-  <a href="" class="game-box game3 <?php if($has_played[2]) echo 'completed'?>">
+  <a href="./einstein-game" class="game-box game3 <?php if($has_played[2]) echo 'completed'?>">
     <?php if($has_played[2]) echo "<div class='completed-tick'></div>"; ?>
     <div class="game-layer">
       <div class="game-name">Einstein feladványa</div>

@@ -70,5 +70,21 @@ body {
   justify-items: center;
   padding: 1vw;
 }
-.img-container img {
+.nationality {
+  position: relative;
+}
+.nationality::after {
+  content: attr(data-nationality);
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  top: 25%;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }

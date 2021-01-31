@@ -19,10 +19,14 @@ const registrationOptions = {
   },
 
   "Egyetemista": {
-    "Partiumi Kresztény Egyetem": {
+    "Partiumi Kresztény Egyetem, Nagyvárad": {
       "Óvo- és Tanítóképző": universityClasses, 
       "Képzőművészet-Grafika": universityClasses, 
       "Kereskedelem, Turizmus, Szolgáltatás-gazdaságtan": universityClasses
+    },
+    "Babeș-Bolyai Tudományegyetem, Kolozsvár": {
+      "Óvo- és Tanítóképző": universityClasses,
+      "Egyéb": universityClasses
     }
   }
 }

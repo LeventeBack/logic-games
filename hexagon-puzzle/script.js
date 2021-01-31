@@ -5,6 +5,7 @@ const timer = {
     return (this.endTime.getTime() - this.startTime.getTime()) / 1000;
   }
 }
+let completed = 0;
 
 const wrapper = document.querySelector('.wrapper');
 const container = document.querySelector('.container');
@@ -16,6 +17,9 @@ const grid = document.querySelector('[data-grid]');
 const targetCells = document.querySelectorAll('[data-target-cell]');
 const piecesContainer = document.querySelector('[data-pieces-container]');
 const puzzlePieces = document.querySelectorAll('[data-piece]');
+
+const restartButton = document.querySelector('[data-restart]');
+restartButton.addEventListener('click', () => location.reload());
 
 function setup(){
   $('.pieces-container').html($("[data-piece]").sort(() => Math.random()-0.5));
@@ -78,18 +82,34 @@ function winningGame(){
 }
 
 function saveData(){
+  completed = 1;
   $.ajax({
     type: "POST",
     url: './save.php',
-    data: {time: timer.time},
+    data: {
+      time: timer.time,
+      completed: completed
+    },
     success: function(result) {
       console.log(result);
     },
   });
 }
 
+$(window).on('beforeunload', () => {
+  if(!completed){
+    timer.endTime = new Date();
+    let data = new FormData();
+    data.append('time', timer.time);
+    data.append('completed', completed);
+  
+    navigator.sendBeacon('./save.php', data);
+  }
+});
+
 window.addEventListener("resize", () => {
   taskDiv.style.width = `${container.offsetWidth}px`;
 })
+
 
 setup();
