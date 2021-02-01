@@ -154,7 +154,9 @@ body {
   background-position: center;
 }
 .game3 {
+  background-image: url("./img/einstein-game.png");
   background-position: center;
+  background-size: cover;
 }
 
 .game-name {
