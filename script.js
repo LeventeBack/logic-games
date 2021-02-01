@@ -22,9 +22,18 @@ const registrationOptions = {
     "Partiumi Kresztény Egyetem, Nagyvárad": {
       "Óvo- és Tanítóképző": universityClasses, 
       "Képzőművészet-Grafika": universityClasses, 
-      "Kereskedelem, Turizmus, Szolgáltatás-gazdaságtan": universityClasses
+      "Kereskedelem, Turizmus, Szolgáltatás-gazdaságtan": universityClasses,
+      "Egyéb": universityClasses
     },
     "Babeș-Bolyai Tudományegyetem, Kolozsvár": {
+      "Óvo- és Tanítóképző": universityClasses,
+      "Egyéb": universityClasses
+    },
+    "Debreceni egyetem": {
+      "Óvo- és Tanítóképző": universityClasses,
+      "Egyéb": universityClasses
+    },
+    "Nyíregyházi egyetem": {
       "Óvo- és Tanítóképző": universityClasses,
       "Egyéb": universityClasses
     }
