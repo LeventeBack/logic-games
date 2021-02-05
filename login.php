@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Főoldal</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-<?php 
+<?php
   session_start();
   include('./database.php');
+  if(isset($_SESSION['games_player'])){
+    header('location: index.php');
+  }
   if(isset($_POST['submit']) && isset($_POST['player_id'])){
     $id = $_POST['player_id'];
     
@@ -22,13 +16,26 @@
     $sql = "SELECT * FROM players WHERE id = '".$id."'";
     $result = $conn->query($sql);
 
-    if($result->num_rows == 0)
-      echo "<div class='error'>Hibás Kód!</div>";
-    else {
+    if($result->num_rows > 0){
       $_SESSION['games_player'] = $result->fetch_assoc();
       header('location: index.php');
     }
+    else {
+      echo "<div class='error'>Hibás Kód!</div>";
+    }
   } 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Főoldal</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<?php
+
   if(isset($_GET['success'])){
     echo "<div class='notice'>Sikeres regisztráció, most jelentkezz be!</div>";
   }

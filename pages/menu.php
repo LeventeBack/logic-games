@@ -23,6 +23,15 @@
   unset($game);
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Főoldal</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
 <div class="selection-container">
   
   <a href="./hexagon-puzzle" class="game-box game1 <?php if($has_played[0]) echo 'completed'?>">
@@ -46,3 +55,6 @@
     </div>
   </a>
 </div>
+
+</body>
+</html>

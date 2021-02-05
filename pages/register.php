@@ -16,24 +16,30 @@
     $sql = "SELECT * FROM players WHERE id = '".$id."'";
     $result = $conn->query($sql);
 
-    if($result->num_rows > 0) {
-      echo "<div class='error'>Ez az azonostó már foglalt!</div>";
-      $isError = true;
-    }
-    else {
+    if($result->num_rows == 0) {
       $sql = "INSERT INTO players (id, institution, major, class) VALUES (?, ?, ?, ?)";
       $stmt = $conn->prepare($sql);
       $stmt->bind_param("ssss", $id, $institution, $major, $class);
       $result = $stmt->execute();
       if($result){
         header('location: login.php?success');
-        exit(0);
-      } else {
-
       }
+    }
+    else {
+      echo "<div class='error'>Ez az azonostó már foglalt!</div>";
+      $isError = true;
     }
   } 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Főoldal</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
 <div class="form-container" >
   <form class="form " action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
     <label for="type">Add meg az adataidat!</label>
@@ -60,7 +66,7 @@
         type="text" 
         id="player_id" 
         name="player_id" 
-        placeholder="Azonostó"
+        placeholder="Azonosító"
         autocomplete="off"
         minlength="3"
         maxlength="50"
@@ -82,3 +88,6 @@
 
 </div>
 <script src="script.js"></script>
+
+</body>
+</html>

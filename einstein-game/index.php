@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
   session_start();
   
   if(!isset($_SESSION['games_player']))
@@ -18,7 +18,7 @@
 
   if($result->num_rows > 0)
     header('location: ../');
-?>  -->
+?>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
