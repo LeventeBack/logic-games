@@ -112,6 +112,7 @@ $(() => {
 
 function saveData(points){
   completed = 1;
+  window.scrollTo(0, 0);
   html2canvas(houseContainer).then(canvas => {
     const image = canvas.toDataURL("image/jpg", 0.9);
     $.ajax({

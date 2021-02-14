@@ -141,7 +141,6 @@ body {
 .task__buttons {
   display: flex;
   justify-content: space-evenly;
-  margin: 1rem 0 2rem;
 }
 .task__column {
   padding: 20px 50px;

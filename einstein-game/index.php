@@ -47,6 +47,11 @@
             Ezen személyek közül <span class="bold">egyik sem</span> iszik <span class="bold">ugyanolyan</span> italt. Nem ugyanaz a hobbija és nem tart ugyanolyan állatot, mint valamelyik szomszédja.
           </p>
 
+        <div class="task__buttons">
+          <button class="btn" data-restart>Újrakezdés</button>
+          <button class="btn" data-finish>Befejezem</button>
+        </div>
+
       </div>
       <div class="task__column">
         <h2 class="task__list-title">Azt lehet tudni, hogy: </h2>
@@ -147,11 +152,6 @@
           <div class="house__cell" data-target-cell></div>
         </div>
       </div>
-    </div>
-  
-    <div class="task__buttons">
-      <button class="btn" data-restart>Újrakezdés</button>
-      <button class="btn" data-finish>Befejezem</button>
     </div>
 
 </div>
