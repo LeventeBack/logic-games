@@ -2,13 +2,20 @@
   include('./database.php');
   $isError = false;
 
+  if(isset($_SESSION['games_player'])){
+    header('location: index.php');
+  }
+
   if(isset($_POST['submit'])){
     $id = $_POST['player_id'];
     $institution = $_POST['institution'];
     $major = $_POST['major'];
     $class = $_POST['class'];
+
+    echo "$id $institution $major $class"; 
     
     $conn = Database();
+    $conn->set_charset('utf8mb4');
     
     if ($conn->connect_error) 
       die("Connection failed: " . $conn->connect_error);
@@ -17,10 +24,9 @@
     $result = $conn->query($sql);
 
     if($result->num_rows == 0) {
-      $sql = "INSERT INTO players (id, institution, major, class) VALUES (?, ?, ?, ?)";
-      $stmt = $conn->prepare($sql);
-      $stmt->bind_param("ssss", $id, $institution, $major, $class);
-      $result = $stmt->execute();
+      $sql = "INSERT INTO players (id, institution, major, class) 
+              VALUES ('$id', '$institution', '$major', '$class')";
+      $result = $conn->query($sql);
       if($result){
         header('location: login.php?success');
       }
@@ -32,7 +38,7 @@
   } 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

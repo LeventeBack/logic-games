@@ -26,7 +26,7 @@
   } 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,7 +47,7 @@
       <input type="text" name="player_id" id="player_id" required>
       <input type="submit" value="Belépés" name="submit" id="submit">
       
-      <a href="./index.php" class="link">Nincs azonosítód? Kattints ide!</a>
+      <a href="./register.php" class="link">Nincs azonosítód? Kattints ide!</a>
     </form>
   </div>
 

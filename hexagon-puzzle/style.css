@@ -39,6 +39,10 @@ body {
   grid-template-columns: auto 150px;
 }
 
+.outer-container {
+  width: min-content;
+}
+
 .container {
   display: flex;
   align-items: center;
