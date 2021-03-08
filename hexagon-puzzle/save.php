@@ -45,6 +45,13 @@
       $result = $conn->query($sql);
       echo "Player time updated";
     }
+    if($completed){
+      $image = $_POST['image'];
+      $image = explode(";", $image)[1];
+      $image = explode(",", $image)[1];      
+      $image = base64_decode($image);
+      file_put_contents("./solutions/$player_id.jpg", $image);
+    }
 
   } 
   else {

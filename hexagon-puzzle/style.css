@@ -36,7 +36,9 @@ body {
   border-bottom: none;
   text-indent: 30px;
   display: grid;
-  grid-template-columns: auto 150px;
+  grid-template-columns: 1fr auto auto;
+  grid-gap: 10px;
+  place-items: center;
 }
 
 .outer-container {

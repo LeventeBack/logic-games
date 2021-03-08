@@ -21,6 +21,9 @@ const puzzlePieces = document.querySelectorAll('[data-piece]');
 const restartButton = document.querySelector('[data-restart]');
 restartButton.addEventListener('click', () => location.reload());
 
+const finishButton = document.querySelector('[data-finish]');
+finishButton.addEventListener('click', completedGame);
+
 function setup(){
   $('.pieces-container').html($("[data-piece]").sort(() => Math.random()-0.5));
   taskDiv.style.width = `${container.offsetWidth}px`;
@@ -41,11 +44,7 @@ targetCells.forEach(targetCell => {
 
 puzzlePieces.forEach((piece, index) => {
   piece.addEventListener('dragstart', e => e.target.classList.add('dragging'));
-  piece.addEventListener('dragend', e => {
-    e.target.classList.remove('dragging')
-    if(piecesContainer.childElementCount === 0 && hasWon())
-      winningGame();
-  });
+  piece.addEventListener('dragend', e => e.target.classList.remove('dragging'));
   piece.style.backgroundImage = `url('./pics/${index + 1}.png')`;
   piece.dataset.id = index + 1;
   piece.setAttribute('draggable', true);
@@ -62,17 +61,12 @@ piecesContainer.addEventListener('dragover', e => {
   selection.appendChild(draggedElement);
 })
 
-function hasWon(){
-  for(let i = 0; i < targetCells.length; i++){
-    const targetCell = targetCells[i];
-    const puzzlePiece = targetCell.querySelector('[data-piece]');
-    if(targetCell.dataset.id !== puzzlePiece.dataset.id)
-      return false;
+function completedGame(){
+  if(piecesContainer.childElementCount > 0) {
+    alert('Ahhoz, hogy befejezd minden hatszöget fel kell használj!');
+    return;
   }
-  return true;
-}
 
-function winningGame(){
   wrapper.classList.add('winner');
   taskDiv.classList.add('hidden');
   messageDiv.classList.remove('hidden');
@@ -83,17 +77,22 @@ function winningGame(){
 
 function saveData(){
   completed = 1;
-  $.ajax({
-    type: "POST",
-    url: './save.php',
-    data: {
-      time: timer.time,
-      completed: completed
-    },
-    success: function(result) {
-      console.log(result);
-    },
-  });
+  window.scrollTo(0, 0);
+  html2canvas(grid).then(canvas => {
+    const image = canvas.toDataURL("image/jpg", 0.9);
+    $.ajax({
+      type: "POST",
+      url: './save.php',
+      data: {
+        image: image, 
+        time: timer.time,
+        completed: completed
+      },
+      success: (result) => {
+        console.log(result);
+      },
+    });
+  })
 }
 
 $(window).on('beforeunload', () => {

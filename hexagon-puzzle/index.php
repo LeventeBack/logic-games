@@ -31,6 +31,7 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
     crossorigin="anonymous">
   </script>
+  <script src="../html2canvas.min.js"></script>
   <script src="script.js" defer></script>
   <link rel="stylesheet" href="./style.css">
   <link rel="shortcut icon" href="./pics/hexagon.png" type="image/x-icon">
@@ -45,6 +46,7 @@
           Helyezd el a kis hatszögeket a nagy alakzatba, úgy, hogy két szomszédos háromszögben ugyanaz a szám legyen. A megadott hatszögeket nem lehet elforgatni.
         </span>
         <button class="btn" data-restart>Újrakezd</button>
+        <button class="btn" data-finish>Befejezem</button>
       </div>
 
       <div class="container">
@@ -72,7 +74,7 @@
       </div>
 
       <div class="message hidden" data-message>
-          <h1 class="text">Gratulálok! Ügyes vagy!</h1>
+          <h1 class="text">Köszönöm, hogy végigjátszottad!</h1>
           <a href="../" class="btn">Vissza a Főoldalra</a>
       </div>
     </div>
